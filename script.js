@@ -52,3 +52,4 @@ if (calendarContainer) {
     calendarContainer.appendChild(dayBox);
   });
 }
+
