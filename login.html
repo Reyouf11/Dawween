@@ -1,48 +1,73 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تسجيل الدخول</title>
-  <link rel="stylesheet" href="loginStyle.css">
-</head>
-<body>
-  <div class="login-container">
-    <h2>تسجيل الدخول</h2>
-    <form id="login-form">
-      <label for="username">اسم المستخدم:</label>
-      <input type="text" id="username" placeholder="أدخل اسم المستخدم">
-      <label for="password">كلمة المرور:</label>
-      <input type="password" id="password" placeholder="أدخل كلمة المرور">
-      <button type="submit">دخول</button>
-    </form>
-
-    <div class="ear-l"></div>
-    <div class="ear-r"></div>
-    <div class="panda-face">
-        <div class="blush-l"></div>
-        <div class="blush-r"></div>
-        <div class="eye-l">
-            <div class="eyeball-l"></div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="loginStyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>تسجيل الدخول</title>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="sign-up">
+        <form>
+          <h1>إنشاء حساب</h1>
+          <!-- <div class="icons">
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+          </div>
+          <span>or use email for registeration</span> -->
+          <input type="text" placeholder="الاسم" />
+          <input type="text" placeholder="اسم المستخدم" />
+          <input type="password" placeholder="كلمةالمرور" />
+          <button>تسجيل</button>
+        </form>
+      </div>
+      <div class="sign-in">
+        <form>
+          <h1>تسجيل الدخول</h1>
+          <!-- <div class="icons">
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+          </div>
+          <span>or use email password</span> -->
+          <input type="text" placeholder="اسم المستخدم" />
+          <input type="password" placeholder="كلمة المرور" />
+          <a href="#">نسيت كلمة المرور؟</a>
+          <button>دخول</button>
+        </form>
+      </div>
+      <div class="toogle-container">
+        <div class="toogle">
+          <div class="toogle-panel toogle-left">
+            <h1>!اهلا بك</h1>
+            <p>لديك حساب بالفعل؟</p>
+            <button class="hidden" id="login">تسجيل الدخول </button>
+          </div>
+          <div class="toogle-panel toogle-right">
+            <h1>!اهلا مجددا</h1>
+            <p>ليس لديك حساب؟</p>
+            <button class="hidden" id="register">إنشاء حساب جديد</button>
+          </div>
         </div>
-        <div class="eye-r">
-            <div class="eyeball-r"></div>
-        </div>
-        <div class="nose"></div>
-        <div class="mouth"></div>
+      </div>
     </div>
-    
-    <div class="hand-l"></div>
-    <div class="hand-r"></div>
-    <div class="paw-l"></div>
-    <div class="paw-r"></div>
-    
-</div>
-    
-    <script src="loginJavaScript.js"></script>
-
-
-    <p>ليس لديك حساب؟ <a href="signup.html">إنشاء حساب جديد</a></p>
-  </div>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

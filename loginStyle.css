@@ -1,250 +1,207 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, rgb(123, 31, 162), rgb(164, 80, 139));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 150px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+}
+
+.container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+
+.container span {
+  font-size: 12px;
+}
+
+.container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+}
+.container button {
+  background-color: rgb(123, 31, 162);
+  color: #fff;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.container form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.container input {
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.sign-up, .sign-in {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container.active .sign-in {
+  transform: translateX(100%);
+}
+
+.sign-up {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+  opacity: 0;
+}
+
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%, 49.99%{
+    opacity: 0;
+    z-index: 1;
   }
-  body {
-    background-color: #e0caea;
+   50%, 100%{
+    opacity: 1;
+    z-index: 5;
   }
-  .login-container {
-    height: 31.25em;
-    width: 31.25em;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-  }
-  form {
-    width: 23.75em;
-    height: 18.75em;
-    background-color: #ffffff;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: calc(50% + 3.1em);
-    left: 50%;
-    padding: 0 3.1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 0.5em;
-  }
-  form label {
-    display: block;
-    margin-bottom: 0.2em;
-    font-weight: 600;
-    color: #2e0d30;
-  }
-  form input {
-    font-size: 0.95em;
-    font-weight: 400;
-    color: #3f3554;
-    padding: 0.3em;
-    border: none;
-    border-bottom: 0.12em solid #3f3554;
-    outline: none;
-  }
-  form input:focus {
-    border-color: #7b1fa2;
-  }
-  form input:not(:last-child) {
-    margin-bottom: 0.9em;
-  }
-  form button {
-    font-size: 0.95em;
-    padding: 0.8em 0;
-    border-radius: 2em;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    background-color: #7d22a4;
-    color: #2e0d30;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    margin-top: 0.8em;
-    transition: 0.5s ;
-  }
-  
-  .panda-face {
-    height: 7.5em;
-    width: 8.4em;
-    background-color: #ffffff;
-    border: 0.18em solid #2e0d30;
-    border-radius: 7.5em 7.5em 5.62em 5.62em;
-    position: absolute;
-    top: 2em;
-    margin: auto;
-    left: 0;
-    right: 0;
-  }
-  .ear-l,
-  .ear-r {
-    background-color: #3f3554;
-    height: 2.5em;
-    width: 2.81em;
-    border: 0.18em solid #2e0d30;
-    border-radius: 2.5em 2.5em 0 0;
-    top: 1.75em;
-    position: absolute;
-  }
-  .ear-l {
-    transform: rotate(-38deg);
-    left: 10.75em;
-  }
-  .ear-r {
-    transform: rotate(38deg);
-    right: 10.75em;
-  }
-  .blush-l,
-  .blush-r {
-    background-color: #ff8bb1;
-    height: 1em;
-    width: 1.37em;
-    border-radius: 50%;
-    position: absolute;
-    top: 4em;
-  }
-  .blush-l {
-    transform: rotate(25deg);
-    left: 1em;
-  }
-  .blush-r {
-    transform: rotate(-25deg);
-    right: 1em;
-  }
-  .eye-l,
-  .eye-r {
-    background-color: #3f3554;
-    height: 2.18em;
-    width: 2em;
-    border-radius: 2em;
-    position: absolute;
-    top: 2.18em;
-  }
-  .eye-l {
-    left: 1.37em;
-    transform: rotate(-20deg);
-  }
-  .eye-r {
-    right: 1.37em;
-    transform: rotate(20deg);
-  }
-  .eyeball-l,
-  .eyeball-r {
-    height: 0.6em;
-    width: 0.6em;
-    background-color: #ffffff;
-    border-radius: 50%;
-    position: absolute;
-    left: 0.6em;
-    top: 0.6em;
-    transition: 1s all;
-  }
-  .eyeball-l {
-    transform: rotate(20deg);
-  }
-  .eyeball-r {
-    transform: rotate(-20deg);
-  }
-  .nose {
-    height: 1em;
-    width: 1em;
-    background-color: #3f3554;
-    position: absolute;
-    top: 4.37em;
-    margin: auto;
-    left: 0;
-    right: 0;
-    border-radius: 1.2em 0 0 0.25em;
-    transform: rotate(45deg);
-  }
-  .nose:before {
-    content: "";
-    position: absolute;
-    background-color: #3f3554;
-    height: 0.6em;
-    width: 0.1em;
-    transform: rotate(-45deg);
-    top: 0.75em;
-    left: 1em;
-  }
-  .mouth,
-  .mouth:before {
-    height: 0.75em;
-    width: 0.93em;
-    background-color: transparent;
-    position: absolute;
-    border-radius: 50%;
-    box-shadow: 0 0.18em #3f3554;
-  }
-  .mouth {
-    top: 5.31em;
-    left: 3.12em;
-  }
-  .mouth:before {
-    content: "";
-    position: absolute;
-    left: 0.87em;
-  }
-  .hand-l,
-  .hand-r {
-    background-color: #3f3554;
-    height: 2.81em;
-    width: 2.5em;
-    border: 0.18em solid #2e0d30;
-    border-radius: 0.6em 0.6em 2.18em 2.18em;
-    transition: 1s all;
-    position: absolute;
-    top: 8.4em;
-  }
-  .hand-l {
-    left: 7.5em;
-  }
-  .hand-r {
-    right: 7.5em;
-  }
-  .paw-l,
-  .paw-r {
-    background-color: #3f3554;
-    height: 3.12em;
-    width: 3.12em;
-    border: 0.18em solid #2e0d30;
-    border-radius: 2.5em 2.5em 1.2em 1.2em;
-    position: absolute;
-    top: 26.56em;
-  }
-  .paw-l {
-    left: 10em;
-  }
-  .paw-r {
-    right: 10em;
-  }
-  .paw-l:before,
-  .paw-r:before {
-    position: absolute;
-    content: "";
-    background-color: #ffffff;
-    height: 1.37em;
-    width: 1.75em;
-    top: 1.12em;
-    left: 0.55em;
-    border-radius: 1.56em 1.56em 0.6em 0.6em;
-  }
-  .paw-l:after,
-  .paw-r:after {
-    position: absolute;
-    content: "";
-    background-color: #ffffff;
-    height: 0.5em;
-    width: 0.5em;
-    border-radius: 50%;
-    top: 0.31em;
-    left: 1.12em;
-    box-shadow: 0.87em 0.37em #ffffff, -0.87em 0.37em #ffffff;
-  }
-  @media screen and (max-width: 500px) {
-    .container {
-      font-size: 14px;
-    }
-  }
+}
+
+.icons {
+  margin: 20px 0;
+}
+
+.icons a {
+  border: 1px solid #ccc;
+  border-radius: 20%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  width: 40px;
+  height: 40px;
+}
+
+.toogle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 150px;
+  z-index: 1000;
+  transition: all 0.6s ease-in-out;
+}
+
+.container.active .toogle-container {
+  transform: translateX(-100%);
+  border-radius: 150px;
+}
+
+.toogle {
+  background-color: rgb(164, 80, 139);
+  height: 100%;
+  background: linear-gradient(to right, rgb(164, 80, 139), rgb(123, 31, 162));
+  color: #fff;
+  position: relative;
+  left: -100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.container.active .toogle {
+  transform: translateX(50%);
+}
+
+.toogle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.toogle-left {
+  transform: translateX(-200%);
+}
+
+.container.active .toogle-left {
+  transform: translateX(0);
+}
+
+.toogle-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.container.active .toogle-right {
+  transform: translateX(200%);
+}
+
