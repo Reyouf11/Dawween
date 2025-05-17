@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دوّن - تقويم المهام</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&family=Tajawal:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <aside id="sidebar">
+    <h2>خيارات</h2>
+    <ul>
+      <li><button id="login-btn" onclick="window.location.href='login.html'">تسجيل الدخول</button></li>
+      <li><button id="signup-btn" onclick="window.location.href='signup.html'">إنشاء حساب</button></li>
+      <li><button onclick="window.location.href='setting.html'">الإعدادات</button></li>
+      <li><button id="logout-btn">تسجيل الخروج</button></li>
+      <li><button onclick="window.location.href='contact.html'">التواصل</button></li>
+    </ul>
+  </aside>
+
+  <main>
+    <header>
+      <h1>دوّن</h1>
+      <h2 id="welcome-message"></h2>
+    </header>
+
+    <section id="calendar-section">
+      <div id="week-calendar"></div>
+    </section>
+
+    <!-- واجهة المهام، مخفية افتراضياً -->
+    <div id="tasks-section" style="display:none; margin-top: 20px;">
+      <!-- تقدر تضيفين المهام هنا -->
+    </div>
+  </main>
+
+  <script>
+    window.onload = () => {
+      fetch('/api/user')
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.username) {
+            // عرض الترحيب
+            document.getElementById('welcome-message').textContent =` مرحبًا بك يا ${data.username}`;
+            document.getElementById('tasks-section').style.display = 'block';
+
+            // إخفاء أزرار الدخول وإنشاء حساب
+            document.getElementById('login-btn').style.display = 'none';
+            document.getElementById('signup-btn').style.display = 'none';
+          } else {
+            // إذا مو مسجل دخول، نخفي زر تسجيل الخروج
+            document.getElementById('logout-btn').style.display = 'none';
+          }
+        })
+        .catch((err) => {
+          console.error('خطأ في جلب اسم المستخدم:', err);
+        });
+    };
+
+    // كود تسجيل الخروج
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoutBtn = document.getElementById('logout-btn');
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async () => {
+          try {
+            const response = await fetch('/logout', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+
+            if (response.ok) {
+              window.location.href = 'login.html';
+            } else {
+              alert('فشل تسجيل الخروج');
+            }
+          } catch (error) {
+            console.error('خطأ في تسجيل الخروج:', error);
+            alert('حدث خطأ أثناء تسجيل الخروج');
+          }
+        });
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

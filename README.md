@@ -1,12 +1,36 @@
-# # Dawween | دوّن
+# Smart Task Calendar Project(Dawwen)
 
-This project combines a to-do list, calendar, and AI assistant to help you stay organized effortlessly.
+## Description
+A web application for managing daily tasks in a weekly calendar with smart task completion 
+suggestions using OpenAI User data are stored locally in a MongoDB database.
 
-Smart Reminders: Get notified in advance and receive AI-generated suggestions to tackle your tasks.  
-Exam/Test Support: Automatically schedules study sessions and provides study tips or resources.  
-Calendar Integration: Visualize deadlines and avoid last-minute stress.  
-AI-Powered Ideas: Stuck on a task? Get quick, actionable steps to make progress.  
+For more details, visit the [Wiki] https://github.com/Reyouf11/Dawween/wiki
 
+---
 
-Perfect for students, professionals, and anyone who wants to work smarter, not harder.
+## Requirements
+
+- Node.js
+- MongoDB
+- OpenAI API Key
+
+---
+
+## Setup
+
+1. Clone the repository from GitHub: https://github.com/Reyouf11/Dawween
+
+2. Install dependencies:
+
+    ```
+   npm install
+
+3. Make sure MongoDB is running locally 
+
+4. Start the server
+
+   ```
+   node sever.js
+
+5. open your browser and go to:  [http://localhost:3000]
 

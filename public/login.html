@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل الدخول - دوّن</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&family=Tajawal:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>تسجيل الدخول</h1>
+  </header>
+
+  <main>
+    <div id="login-panel">
+      <form id="login-form">
+        <label for="login-username">اسم المستخدم:</label>
+        <input type="text" id="login-username" placeholder="أدخل اسم المستخدم" required />
+
+        <label for="login-password">كلمة المرور:</label>
+        <input type="password" id="login-password" placeholder="أدخل كلمة المرور" required />
+
+        <button type="submit">دخول</button>
+      </form>
+
+      <div id="signup-link">
+        <p>ليس لديك حساب؟ <a href="signup.html">إنشاء حساب جديد</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+  <script src="loginHandler.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الإعدادات - دوّن</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body class="settings-page">
+
+  <header>الإعدادات</header>
+
+  <main>
+    <form id="settings-form" autocomplete="off">
+      <label for="profile-pic">صورة الحساب:</label>
+      <input type="file" id="profile-pic" accept="image/*" />
+      <img id="profile-pic-preview" src="" alt="معاينة صورة الحساب" />
+
+      <label for="username">اسم المستخدم:</label>
+      <input type="text" id="username" placeholder="أدخل اسم المستخدم" />
+
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" placeholder="أدخل بريدك الإلكتروني" />
+
+      <label for="password">كلمة المرور الجديدة:</label>
+      <input type="password" id="password" placeholder="أدخل كلمة مرور جديدة" />
+
+      <label for="theme-color">لون السمة:</label>
+      <input type="color" id="theme-color" value="#9c27b0" />
+
+      <label for="reminder-time">وقت التنبيه قبل المهمة (دقائق):</label>
+      <input type="number" id="reminder-time" value="15" min="1" />
+
+      <button type="submit">حفظ التعديلات</button>
+    </form>
+  </main>
+
+  <script>
+  // ✅ تحميل اللون المحفوظ عند فتح الصفحة
+  const savedThemeColor = localStorage.getItem('themeColor');
+  const themeColorInput = document.getElementById('theme-color');
+
+  if (savedThemeColor) {
+    document.documentElement.style.setProperty('--main-color', savedThemeColor);
+    themeColorInput.value = savedThemeColor;
+  }
+
+  // ✅ عند الضغط على حفظ ➔ يتم تطبيق اللون الجديد وحفظه
+  document.getElementById('settings-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const themeColor = themeColorInput.value;
+    const reminderTime = document.getElementById('reminder-time').value;
+    const profilePic = document.getElementById('profile-pic-preview').src;
+
+    if (username) localStorage.setItem('username', username);
+    if (email) localStorage.setItem('email', email);
+    if (password) localStorage.setItem('password', password);  // ⚠️ للتجريب فقط
+    localStorage.setItem('themeColor', themeColor);
+    localStorage.setItem('reminderTime', reminderTime);
+    if (profilePic) localStorage.setItem('profilePic', profilePic);
+
+    // ✅ هنا يتم تحديث اللون فعليًا
+    document.documentElement.style.setProperty('--main-color', themeColor);
+
+    // ✅ ثم الانتقال للصفحة الرئيسية
+    window.location.href = "home.html";
+  });
+
+  // ✅ معاينة صورة الحساب
+  document.getElementById('profile-pic').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('profile-pic-preview').src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+
+
+</body>
+</html>

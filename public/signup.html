@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التسجيل - دوّن</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500&family=Tajawal:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>إنشاء حساب جديد</h1>
+  </header>
+
+  <main>
+    <div id="register-panel">
+      <form id="register-form" method="POST">
+        <label for="register-username">اسم المستخدم:</label>
+        <input type="text" id="register-username" name="name" placeholder="أدخل اسم المستخدم" required>
+
+        <label for="register-password">كلمة المرور:</label>
+        <input type="password" id="register-password" name="password" placeholder="أدخل كلمة المرور" required>
+
+        <label for="register-confirm-password">تأكيد كلمة المرور:</label>
+        <input type="password" id="register-confirm-password" placeholder="أعد إدخال كلمة المرور" required>
+
+        <button type="submit">تسجيل</button>
+      </form>
+
+      <div id="login-link">
+        <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const signupForm = document.getElementById('register-form');
+
+      if (signupForm) {
+        signupForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const name = document.querySelector('input[name="name"]').value;
+          const password = document.querySelector('input[name="password"]').value;
+          const confirmPassword = document.getElementById('register-confirm-password').value;
+
+          if (password !== confirmPassword) {
+            alert('كلمتا المرور غير متطابقتين');
+            return;
+          }
+
+          try {
+            const response = await fetch('/signup', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ name, password })
+            });
+
+            const result = await response.text();
+
+            if (result === 'success') {
+              window.location.href = '/login';
+            } else {
+              alert(result);
+            }
+          } catch (error) {
+            console.error('خطأ أثناء إنشاء الحساب:', error);
+            alert('فشل في إنشاء الحساب');
+          }
+        });
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
