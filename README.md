@@ -10,4 +10,9 @@ AI-Powered Ideas: Stuck on a task? Get quick, actionable steps to make progress.
 
 Perfect for students, professionals, and anyone who wants to work smarter, not harder.
 
+
+
+📧 Email Reminder Feature
+this email reminder feature is still in progress
+
  
